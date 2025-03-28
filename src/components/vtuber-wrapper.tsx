@@ -74,6 +74,7 @@ export default function VTuberWrapper() {
     )
   }
 
-  return useFallback ? <FallbackAvatar /> : <VTuberAvatar />
+  return <VTuberAvatar />
+  // return useFallback ? <FallbackAvatar /> : <VTuberAvatar />
 }
 
