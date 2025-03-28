@@ -31,7 +31,7 @@ export default function FeaturesSection() {
           <FeatureCard
             icon={<Youtube className="h-10 w-10 text-purple-500" />}
             title="Live Streaming"
-            description="Seamlessly link to YouTube, Twitch and TikTok Live with easy integration."
+            description="Seamlessly connect with YouTube, Twitch and TikTok Live with easy integration."
           />
         </div>
       </div>

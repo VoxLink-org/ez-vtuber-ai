@@ -3,8 +3,10 @@ import VTuberWrapper from "@/components/vtuber-wrapper"
 import DemoSection from "@/components/demo-section"
 import { Button } from "@/components/ui/button"
 import FeaturesSection from "@/components/features-section"
+import { getStarted } from '@/lib/utils';
 
 export default function App() {
+
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -27,7 +29,7 @@ export default function App() {
             </a>
           </nav>
           <div>
-            <Button>Get Started</Button>
+            <Button onClick={()=>getStarted('top')}>Get Started</Button>
           </div>
         </div>
       </header>
@@ -172,7 +174,7 @@ export default function App() {
                     5 hours streaming/month
                   </li>
                 </ul>
-                <Button className="mt-6">Get Started</Button>
+                <Button className="mt-6" onClick={()=>getStarted('Free')}>Get Started</Button>
               </div>
               <div className="flex flex-col p-6 bg-background rounded-lg border shadow-sm relative">
                 <div className="absolute -top-4 left-0 right-0 mx-auto w-fit px-4 py-1 bg-purple-600 text-white text-sm font-medium rounded-full">
@@ -256,7 +258,7 @@ export default function App() {
                     Chat integration
                   </li>
                 </ul>
-                <Button className="mt-6 bg-purple-600 hover:bg-purple-700">Get Started</Button>
+                <Button className="mt-6 bg-purple-600 hover:bg-purple-700" onClick={()=>getStarted('Pro')}>Get Started</Button>
               </div>
               <div className="flex flex-col p-6 bg-background rounded-lg border shadow-sm">
                 <div className="space-y-2">
@@ -337,7 +339,7 @@ export default function App() {
                     Youtube, TikTok and Twitch integration
                   </li>
                 </ul>
-                <Button className="mt-6">Get Started</Button>
+                <Button className="mt-6" onClick={()=>getStarted('Ultimate')}>Get Started</Button>
               </div>
             </div>
           </div>

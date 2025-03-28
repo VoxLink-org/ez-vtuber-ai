@@ -60,16 +60,21 @@ export default function VTuberAvatar() {
 
     const mockEmotions: Emotion[] = ["neutral", "shy", "sad", "angry", "surprised", "shy", "sad", "angry", "surprised", "shy"]
 
-    const timer = setInterval(() => {
+    function goGoGo(){
       const randomIndex = Math.floor(Math.random() * mockPhrases.length)
       const randomPhrase = mockPhrases[randomIndex % mockPhrases.length]
       const randomEmotion = mockEmotions[randomIndex % mockEmotions.length]
 
       setTranscript(randomPhrase)
       setCurrentEmotion(randomEmotion)
-      // setIsSpeaking(true)
-      // setTimeout(() => setIsSpeaking(false), 2000)
+
+    }
+
+    const timer = setInterval(() => {
+      goGoGo()
     }, 4000)
+
+    goGoGo()
 
     // Cleanup on unmount
     return () => {
