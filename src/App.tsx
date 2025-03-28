@@ -1,8 +1,8 @@
-import { ArrowRight, Mic, Brain, MessageSquare, Sparkles } from "lucide-react"
+import { ArrowRight, Sparkles } from "lucide-react"
 import VTuberWrapper from "@/components/vtuber-wrapper"
-import FeatureCard from "@/components/feature-card"
 import DemoSection from "@/components/demo-section"
 import { Button } from "@/components/ui/button"
+import FeaturesSection from "@/components/features-section"
 
 export default function App() {
   return (
@@ -77,37 +77,10 @@ export default function App() {
           </div>
         </section>
 
-        {/* Features Section */}
         <section id="features" className="py-16 md:py-24">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Intelligent Features</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Our AI-powered VTuber app comes with everything you need to create an engaging virtual presence.
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
-              <FeatureCard
-                icon={<Mic className="h-10 w-10 text-purple-500" />}
-                title="Voice Recognition"
-                description="Real-time voice detection and transcription for seamless interaction with your audience."
-              />
-              <FeatureCard
-                icon={<Brain className="h-10 w-10 text-purple-500" />}
-                title="Emotion AI"
-                description="Advanced AI that understands context and displays appropriate emotions on your avatar."
-              />
-              <FeatureCard
-                icon={<MessageSquare className="h-10 w-10 text-purple-500" />}
-                title="Interactive Chat"
-                description="Respond to viewer messages with natural language processing and personality."
-              />
-            </div>
-          </div>
+          <FeaturesSection />
         </section>
-
+        
         {/* Demo Section */}
         <section id="demo" className="py-16 md:py-24 bg-slate-50 dark:bg-slate-900">
           <div className="container px-4 md:px-6">
@@ -282,7 +255,7 @@ export default function App() {
                     </svg>
                     Chat integration
                   </li>
-                  </ul>
+                </ul>
                 <Button className="mt-6 bg-purple-600 hover:bg-purple-700">Get Started</Button>
               </div>
               <div className="flex flex-col p-6 bg-background rounded-lg border shadow-sm">
@@ -376,7 +349,7 @@ export default function App() {
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-purple-500" />
             <span className="text-lg font-semibold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-            EZ VTuber AI
+              EZ VTuber AI
             </span>
           </div>
           <p className="text-center text-sm text-muted-foreground md:text-left">
