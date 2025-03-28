@@ -12,7 +12,7 @@ export default function App() {
           <div className="flex items-center gap-2">
             <Sparkles className="h-6 w-6 text-purple-500" />
             <span className="text-xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              VTuber AI
+              EZ VTuber AI
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
@@ -40,7 +40,7 @@ export default function App() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
-                    Bring Your Virtual Avatar to Life
+                    Bring Your Virtual Avatar to Life Easily
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Create, customize, and interact with your AI-powered VTuber. Express emotions, respond to viewers,
@@ -51,10 +51,21 @@ export default function App() {
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                    onClick={() => {
+                      document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })
+                    }}
                   >
                     Try Demo <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                  <Button size="lg" variant="outline">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={() => {
+                      document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+
+                      // alert('Our interactive demo allows you to chat with a virtual VTuber avatar. Try asking questions about games, music, or just say hello!')
+                    }}
+                  >
                     Learn More
                   </Button>
                 </div>
@@ -132,7 +143,7 @@ export default function App() {
                   <p className="text-muted-foreground">Perfect for beginners</p>
                 </div>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold">$9</span>
+                  <span className="text-4xl font-bold">$0</span>
                   <span className="text-muted-foreground">/month</span>
                 </div>
                 <ul className="mt-4 space-y-2 flex-1">
@@ -199,7 +210,7 @@ export default function App() {
                   <p className="text-muted-foreground">For serious streamers</p>
                 </div>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold">$19</span>
+                  <span className="text-4xl font-bold">$1</span>
                   <span className="text-muted-foreground">/month</span>
                 </div>
                 <ul className="mt-4 space-y-2 flex-1">
@@ -252,7 +263,7 @@ export default function App() {
                     >
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    20 hours streaming/month
+                    Unlimited streaming
                   </li>
                   <li className="flex items-center">
                     <svg
@@ -280,7 +291,7 @@ export default function App() {
                   <p className="text-muted-foreground">For professional VTubers</p>
                 </div>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold">$39</span>
+                  <span className="text-4xl font-bold">$49</span>
                   <span className="text-muted-foreground">/month</span>
                 </div>
                 <ul className="mt-4 space-y-2 flex-1">
@@ -350,7 +361,7 @@ export default function App() {
                     >
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    All platform integrations
+                    Youtube, TikTok and Twitch integration
                   </li>
                 </ul>
                 <Button className="mt-6">Get Started</Button>
@@ -365,11 +376,11 @@ export default function App() {
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-purple-500" />
             <span className="text-lg font-semibold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              VTuber AI
+            EZ VTuber AI
             </span>
           </div>
           <p className="text-center text-sm text-muted-foreground md:text-left">
-            © 2025 VTuber AI. All rights reserved.
+            © 2025 EZ VTuber AI. All rights reserved.
           </p>
           <div className="flex gap-4">
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground">

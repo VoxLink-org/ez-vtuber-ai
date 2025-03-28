@@ -11,7 +11,7 @@ import VTuberAvatar from "./vtuber-avatar"
 
 export default function DemoSection() {
   const [messages, setMessages] = useState<{ role: string; content: string }[]>([
-    { role: "assistant", content: "Hello! I'm Lumi, your AI VTuber assistant. How can I help you today?" },
+    { role: "assistant", content: "Konnichiwa! I'm Shizuku~ How can I help you today?" },
   ])
   const [inputValue, setInputValue] = useState("")
   const [isRecording, setIsRecording] = useState(false)
@@ -25,6 +25,12 @@ export default function DemoSection() {
     setMessages((prev) => [...prev, { role: "user", content: inputValue }])
     setInputValue("")
     setIsLoading(true)
+
+    // Scroll to bottom
+    setTimeout(() => {
+      messagesEndRef.current?.parentElement?.scroll({ top: messagesEndRef.current?.parentElement?.scrollHeight, behavior: "smooth" })
+    }, 100)
+    
 
     // Simulate AI thinking
     setTimeout(() => {
@@ -50,7 +56,7 @@ export default function DemoSection() {
 
       // Scroll to bottom
       setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+        messagesEndRef.current?.parentElement?.scroll({ top: messagesEndRef.current?.parentElement?.scrollHeight, behavior: "smooth" })
       }, 100)
     }, 1500)
   }
@@ -76,7 +82,7 @@ export default function DemoSection() {
 
   const resetChat = () => {
     setMessages([
-      { role: "assistant", content: "Hello! I'm Lumi, your AI VTuber assistant. How can I help you today?" },
+      { role: "assistant", content: "Konnichiwa! I'm Shizuku~ How can I help you today?" },
     ])
   }
 
@@ -89,29 +95,23 @@ export default function DemoSection() {
       <div className="flex flex-col bg-background rounded-xl shadow-lg overflow-hidden border">
         <div className="p-4 border-b bg-muted/40">
           <Tabs defaultValue="chat">
-            <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="chat">Chat</TabsTrigger>
-              <TabsTrigger value="settings">Settings</TabsTrigger>
+              <TabsTrigger value="settings" disabled>Settings</TabsTrigger>
             </TabsList>
             <TabsContent value="chat" className="mt-0">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Chat with Lumi</h3>
+                <h3 className="text-lg font-semibold">Chat with Shizuku</h3>
                 <Button variant="ghost" size="sm" onClick={resetChat}>
                   <RefreshCw className="h-4 w-4 mr-2" />
                   Reset
                 </Button>
               </div>
             </TabsContent>
-            <TabsContent value="settings" className="mt-0">
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold">Avatar Settings</h3>
-                <p className="text-sm text-muted-foreground">Customize your VTuber experience</p>
-              </div>
-            </TabsContent>
           </Tabs>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 h-[300px]">
+        <div className=" overflow-y-auto p-4 h-[300px]">
           <div className="space-y-4">
             {messages.map((message, index) => (
               <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
@@ -144,8 +144,8 @@ export default function DemoSection() {
                 </div>
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
+          <div ref={messagesEndRef} />
         </div>
 
         <div className="p-4 border-t">

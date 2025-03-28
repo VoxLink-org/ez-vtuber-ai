@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Mic, MicOff, Volume2, VolumeX } from "lucide-react"
 
-type Emotion = "neutral" | "happy" | "excited" | "thinking" | "surprised"
+type Emotion = "neutral" | "shy" | "sad" | "angry" | "surprised"
 
 declare global {
   interface Window {
@@ -27,41 +27,55 @@ export default function VTuberAvatar() {
 
   // Mock emotions with parameters for Live2D model
   const emotions = {
-    neutral: { expression: "normal", motion: "idle" },
-    happy: { expression: "happy", motion: "tap_body" },
-    excited: { expression: "angry", motion: "tap_head" },
-    thinking: { expression: "normal", motion: "pinch_in" },
-    surprised: { expression: "surprised", motion: "shake" }
+    // Based on Shizuku model's actual settings:
+    neutral: { expression: "f01", motion: "idle" },       // f01: Default neutral expression
+    shy: { expression: "f01", motion: "pinch_in" },      // f01: Shy expression with pinch motion
+    sad: { expression: "f02", motion: "tap_body" },       // f02: Sad expression with body tap
+    angry: { expression: "f03", motion: "flick_head" },   // f03: Angry expression with head flick
+    surprised: { expression: "f04", motion: "shake" }     // f04: Surprised expression with shake
+    // Available motions per model settings:
+    // - idle, tap_body, flick_head, shake, pinch_in
   }
 
   // Mock voice recognition
-  const toggleListening = () => {
-    setIsListening((prev) => !prev)
 
+  useEffect(() => {
+    // Clear existing interval when toggling off
     if (!isListening) {
-      const mockPhrases = [
-        "Hello! How are you today?",
-        "I'm excited to be streaming!",
-        "Thanks for watching my stream",
-        "What games should we play next?",
-        "Don't forget to subscribe!",
-      ]
-
-      const mockEmotions: Emotion[] = ["neutral", "happy", "excited", "thinking", "surprised"]
-
-      const transcriptionInterval = setInterval(() => {
-        const randomPhrase = mockPhrases[Math.floor(Math.random() * mockPhrases.length)]
-        const randomEmotion = mockEmotions[Math.floor(Math.random() * mockEmotions.length)]
-
-        setTranscript(randomPhrase)
-        setCurrentEmotion(randomEmotion)
-        setIsSpeaking(true)
-        setTimeout(() => setIsSpeaking(false), 2000)
-      }, 4000)
-
-      return () => clearInterval(transcriptionInterval)
+      return
     }
-  }
+
+    const mockPhrases = [
+      "Konnichiwa! I'm Shizuku~",  // neutral
+      "Eto... nice to meet you...",  // shy
+      "I'm feeling a bit lonely today...",  // sad
+      "Hmph! That's annoying!",  // angry
+      "Waaah! You surprised me!",  // surprised
+      "Senpai is watching me...",  // shy
+      "Why does no one notice me...",  // sad
+      "I can't believe this!",  // angry
+      "Nani? What was that?",  // surprised
+      "Please be gentle with me..."  // shy
+    ]
+
+    const mockEmotions: Emotion[] = ["neutral", "shy", "sad", "angry", "surprised", "shy", "sad", "angry", "surprised", "shy"]
+
+    const timer = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * mockPhrases.length)
+      const randomPhrase = mockPhrases[randomIndex % mockPhrases.length]
+      const randomEmotion = mockEmotions[randomIndex % mockEmotions.length]
+
+      setTranscript(randomPhrase)
+      setCurrentEmotion(randomEmotion)
+      // setIsSpeaking(true)
+      // setTimeout(() => setIsSpeaking(false), 2000)
+    }, 4000)
+
+    // Cleanup on unmount
+    return () => {
+      clearInterval(timer)
+    }
+  }, [isListening])
 
   const toggleSpeaking = () => {
     setIsSpeaking((prev) => !prev)
@@ -84,27 +98,30 @@ export default function VTuberAvatar() {
   useEffect(() => {
     if (!modelRef.current) return
 
-    if (isSpeaking) {
-      // Start mouth movement
-      const interval = setInterval(() => {
-        try {
-          modelRef.current.internalModel.eyeBlink = false
-          modelRef.current.internalModel.mouth.openness = Math.random() * 0.5 + 0.5
-        } catch (err) {
-          console.error("Failed to animate mouth:", err)
-        }
-      }, 100)
+    // if (isSpeaking) {
+    //   // Start mouth movement
+    //   const interval = setInterval(() => {
+    //     try {
 
-      return () => clearInterval(interval)
-    } else {
-      // Reset mouth
-      try {
-        modelRef.current.internalModel.mouth.openness = 0
-        modelRef.current.internalModel.eyeBlink = true
-      } catch (err) {
-        console.error("Failed to reset mouth:", err)
-      }
-    }
+    //       modelRef.current.internalModel.coreModel.setParamFloat('PARAM_EYE_L_OPEN', 1)
+    //       modelRef.current.internalModel.coreModel.setParamFloat('PARAM_EYE_R_OPEN', 1)
+    //       modelRef.current.internalModel.coreModel.setParamFloat('PARAM_MOUTH_OPEN_Y', Math.random() * 0.5 + 0.5)
+    //     } catch (err) {
+    //       console.error("Failed to animate mouth:", err)
+    //     }
+    //   }, 500)
+
+    //   return () => clearInterval(interval)
+    // } else {
+    //   // Reset mouth
+    //   try {
+    //     modelRef.current.internalModel.coreModel.setParamFloat('PARAM_MOUTH_OPEN_Y', 0)
+    //     modelRef.current.internalModel.coreModel.setParamFloat('PARAM_EYE_L_OPEN', 1)
+    //     modelRef.current.internalModel.coreModel.setParamFloat('PARAM_EYE_R_OPEN', 1)
+    //   } catch (err) {
+    //     console.error("Failed to reset mouth:", err)
+    //   }
+    // }
   }, [isSpeaking])
 
   // Initialize PIXI and Live2D model
@@ -128,9 +145,18 @@ export default function VTuberAvatar() {
         appRef.current = app
         container.appendChild(app.view)
 
+
         const model = await window.PIXI.live2d.Live2DModel.from(cubism2Model)
+
+        if (!app.stage) {
+          setLoading(false)
+          return
+        }
+
+
         modelRef.current = model
         model.scale.set(0.3)
+
         app.stage.addChild(model)
 
         setLoading(false)
@@ -141,11 +167,12 @@ export default function VTuberAvatar() {
       }
     }
 
+    console.count("loadPIXI")
     loadPIXI()
 
     return () => {
       if (appRef.current) {
-        appRef.current.destroy(true, true)
+        appRef.current.destroy(true)
       }
     }
   }, [])
@@ -190,14 +217,14 @@ export default function VTuberAvatar() {
       )}
 
       <div className="flex space-x-2">
-        <Button size="sm" variant={isListening ? "destructive" : "default"} onClick={toggleListening}>
+        <Button size="sm" variant={isListening ? "destructive" : "default"} onClick={() => setIsListening(!isListening)}>
           {isListening ? <MicOff className="mr-2 h-4 w-4" /> : <Mic className="mr-2 h-4 w-4" />}
           {isListening ? "Stop" : "Listen"}
         </Button>
-        <Button size="sm" variant={isSpeaking ? "destructive" : "default"} onClick={toggleSpeaking}>
+        {/* <Button size="sm" variant={isSpeaking ? "destructive" : "default"} onClick={toggleSpeaking}>
           {isSpeaking ? <VolumeX className="mr-2 h-4 w-4" /> : <Volume2 className="mr-2 h-4 w-4" />}
           {isSpeaking ? "Mute" : "Speak"}
-        </Button>
+        </Button> */}
       </div>
 
       <div className="flex flex-wrap justify-center gap-2">
