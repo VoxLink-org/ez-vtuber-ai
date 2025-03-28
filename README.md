@@ -1,8 +1,29 @@
 # EZ VTuber AI Landing Page
 
+![EZ VTuber AI Banner](https://voxlink-org.github.io/ez-vtuber-ai/og-image.jpg)
+
 ## 🚀 About the Project
 
 **EZ VTuber AI** is a 100% JavaScript/TypeScript open-source solution that makes professional VTuber technology accessible to everyone. This landing page showcases our powerful yet easy-to-use VTuber creation toolkit.
+
+
+## 🚨 Join Our Exclusive Alpha Testing Program! 🚨
+
+**Be among the first to experience next-gen VTuber technology!**
+
+✨ **Why join the alpha?**
+- Get early access to cutting-edge VTuber tools
+- Shape the future of the platform with your feedback
+- Receive special recognition as an early supporter
+
+🔥 **How to participate:**
+
+1. ⭐ **Star this repository** - Show your support and stay updated
+2. 📝 **Join our Wish List** - [Add your name here](https://github.com/VoxLink-org/ez-vtuber-ai/issues/1)
+3. 🚀 **Spread the word** - Share with fellow VTubers and content creators
+
+⏳ **Limited spots available!** Don't miss your chance to be part of this exciting journey.
+
 
 ## ✨ Key Features
 
@@ -22,23 +43,6 @@ Electron-based desktop app with Pixi.js and Live2D for smooth 2D rendering
 
 📺 **Multi-Platform Streaming**  
 Seamless integration with YouTube, Twitch and TikTok Live  
-
-## 🚨 Join Our Exclusive Alpha Testing Program! 🚨
-
-**Be among the first to experience next-gen VTuber technology!**
-
-✨ **Why join the alpha?**
-- Get early access to cutting-edge VTuber tools
-- Shape the future of the platform with your feedback
-- Receive special recognition as an early supporter
-
-🔥 **How to participate:**
-
-1. ⭐ **Star this repository** - Show your support and stay updated
-2. 📝 **Join our Wish List** - [Add your name here](https://github.com/VoxLink-org/ez-vtuber-ai/issues/1)
-3. 🚀 **Spread the word** - Share with fellow VTubers and content creators
-
-⏳ **Limited spots available!** Don't miss your chance to be part of this exciting journey.
 
 ## 💡 Why We Built This
 
