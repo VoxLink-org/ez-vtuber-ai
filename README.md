@@ -9,26 +9,36 @@
 Our Next-Gen VTuber technology includes:
 
 🎤 **Voice Recognition**  
-Real-time voice detection using SoX and advanced audio processing  
+Real-time voice detection using ONNX and advanced audio processing  
 
 🧠 **AI-Powered Emotions**  
-ONNX runtime for efficient emotion prediction and Live2D integration  
+LLM for efficient emotion prediction  
 
 💬 **Interactive Personality**  
 Natural language processing for dynamic audience interactions  
 
 🖥️ **Cross-Platform**  
-Electron-based desktop app with Pixi.js for smooth 2D rendering  
+Electron-based desktop app with Pixi.js and Live2D for smooth 2D rendering  
 
 📺 **Multi-Platform Streaming**  
 Seamless integration with YouTube, Twitch and TikTok Live  
 
-## 🌟 Current Status: Alpha Testing
+## 🚨 Join Our Exclusive Alpha Testing Program! 🚨
 
-We're excited to announce that EZ VTuber AI is now ready for alpha testing! Join our community:
+**Be among the first to experience next-gen VTuber technology!**
 
-1. ⭐ Star this repository to show your support  
-2. 📝 Leave your name in the [Wish List issue](https://github.com/yourusername/vtuber-landing/issues)  
+✨ **Why join the alpha?**
+- Get early access to cutting-edge VTuber tools
+- Shape the future of the platform with your feedback
+- Receive special recognition as an early supporter
+
+🔥 **How to participate:**
+
+1. ⭐ **Star this repository** - Show your support and stay updated
+2. 📝 **Join our Wish List** - [Add your name here](https://github.com/VoxLink-org/ez-vtuber-ai/issues/1)
+3. 🚀 **Spread the word** - Share with fellow VTubers and content creators
+
+⏳ **Limited spots available!** Don't miss your chance to be part of this exciting journey.
 
 ## 💡 Why We Built This
 
