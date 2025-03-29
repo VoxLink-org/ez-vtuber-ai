@@ -119,7 +119,7 @@ export default function App() {
                 </div>
                 <div className="mt-4">
                   <span className="text-4xl font-bold">$0</span>
-                  <span className="text-muted-foreground">/month</span>
+                  <span className="text-muted-foreground">/Month</span>
                 </div>
                 <ul className="mt-4 space-y-2 flex-1">
                   <li className="flex items-center">
@@ -186,7 +186,7 @@ export default function App() {
                 </div>
                 <div className="mt-4">
                   <span className="text-4xl font-bold">$1</span>
-                  <span className="text-muted-foreground">/month</span>
+                  <span className="text-muted-foreground">/Lifetime</span>
                 </div>
                 <ul className="mt-4 space-y-2 flex-1">
                   <li className="flex items-center">
@@ -267,7 +267,7 @@ export default function App() {
                 </div>
                 <div className="mt-4">
                   <span className="text-4xl font-bold">$49</span>
-                  <span className="text-muted-foreground">/month</span>
+                  <span className="text-muted-foreground">/Month</span>
                 </div>
                 <ul className="mt-4 space-y-2 flex-1">
                   <li className="flex items-center">
